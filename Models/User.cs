@@ -1,4 +1,6 @@
 
+using System.Text.Json.Serialization;
+
 namespace Forum._3.Models
 {
     public class User : IEntityBase
@@ -6,6 +8,7 @@ namespace Forum._3.Models
         public string Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
+        [JsonIgnore]
         public string Password { get; set; }
         public string RoleId { get; set; }
         public Role Role { get; set; }

@@ -6,6 +6,7 @@ using Forum._3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace Forum._3.Controllers
 {
     [Route("api/[controller]")]
@@ -69,14 +70,27 @@ namespace Forum._3.Controllers
             return authService.GetAuthData(user);
         }
 
-        [Route("auth")]
+        [Route("auth/{id}")]
         [HttpGet]
         [Authorize(Roles = "admin,user")]
-        public IActionResult GetAuth()
+        public ActionResult<UserViewModel> GetAuth(string id)
         {
-            Console.WriteLine("API Validated!");
-            return Ok("API Validated");
-        }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
+            var user = userRepository.GetSingle(id);
+
+            if (user == null)
+            {
+                return BadRequest(new { username = "user do not exist" });
+            }
+
+            UserViewModel userViewModel = new UserViewModel
+            {
+                Name = user.Username,
+                Email = user.Email
+            };
+
+            return userViewModel;
+        }
     }
 }

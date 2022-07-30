@@ -52,7 +52,8 @@ namespace Forum._3.Services
             return new AuthData{
                 Token = encodedJwt,
                 TokenExpirationTime = ((DateTimeOffset)expirationTime).ToUnixTimeSeconds(),
-                Id = user.Id
+                Id = user.Id,
+                Name = user.Username
             };
         }
         public string HashPassword(string password)
