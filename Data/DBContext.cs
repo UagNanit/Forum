@@ -5,6 +5,7 @@ using Forum._3.Models;
 using Forum._3.Services;
 using System;
 
+
 namespace Forum._3.Data
 {
     public class DBContext : DbContext
@@ -12,6 +13,9 @@ namespace Forum._3.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { set; get; }
+        public DbSet<Post> Posts { set; get; }
+        public DbSet<Topic> Topicts { set; get; }
+        public DbSet<Section> Sections { set; get; }
 
         public DBContext(DbContextOptions<DBContext> options)
             : base(options)

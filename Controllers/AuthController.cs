@@ -49,7 +49,7 @@ namespace Forum._3.Controllers
             var emailUniq = userRepository.isEmailUniq(model.Email);
             if (!emailUniq) return BadRequest(new { email = "user with this email already exists" });
             var usernameUniq = userRepository.IsUsernameUniq(model.Username);
-            if (!usernameUniq) return BadRequest(new { username = "user with this email already exists" });
+            if (!usernameUniq) return BadRequest(new { username = "user with this name already exists" });
 
             var id = Guid.NewGuid().ToString();
             var userTemp = new User
