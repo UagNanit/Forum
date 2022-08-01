@@ -53,7 +53,8 @@ namespace Forum._3.Services
                 Token = encodedJwt,
                 TokenExpirationTime = ((DateTimeOffset)expirationTime).ToUnixTimeSeconds(),
                 Id = user.Id,
-                Name = user.Username
+                Name = user.Username,
+                IsAdmin = user.Role.Name=="admin"
             };
         }
         public string HashPassword(string password)

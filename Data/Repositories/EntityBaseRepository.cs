@@ -37,6 +37,16 @@ namespace Forum._3.Data.Repositories
             }
             return query.AsEnumerable();
         }
+        public virtual IEnumerable<T> AllIncluding(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return query.Where(predicate);
+        }
 
         public T GetSingle(string id)
         {

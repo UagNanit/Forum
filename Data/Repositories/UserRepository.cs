@@ -18,6 +18,11 @@ namespace Forum._3.Data.Repositories {
             return user == null;
         }
 
-       
+        public bool isAdmin(string id)
+        {
+            var user = GetSingle(u => u.Id == id, u=>u.Role);
+            return user.Role.Name == "admin";
+        }
+
     }
 }

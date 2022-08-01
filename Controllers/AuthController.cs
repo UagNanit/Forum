@@ -73,7 +73,7 @@ namespace Forum._3.Controllers
         [Route("auth/{id}")]
         [HttpGet]
         [Authorize(Roles = "admin,user")]
-        public ActionResult<UserViewModel> GetAuth(string id)
+        public ActionResult<UserViewModel> GetUserData(string id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -86,8 +86,11 @@ namespace Forum._3.Controllers
 
             UserViewModel userViewModel = new UserViewModel
             {
+                Id = user.Id,
                 Name = user.Username,
-                Email = user.Email
+                Email = user.Email,
+                IsAdmin = userRepository.isAdmin(user.Id)
+                
             };
 
             return userViewModel;

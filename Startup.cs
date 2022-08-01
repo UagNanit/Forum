@@ -59,6 +59,8 @@ namespace Forum._3
                 });
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITopicRepository, TopicRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
 
             services.AddSingleton<IAuthService>(new AuthService());
         }

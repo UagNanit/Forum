@@ -7,5 +7,6 @@ namespace Forum._3.Data.Abstract
     {
         bool IsUsernameUniq(string username);
         bool isEmailUniq(string email);
+        bool isAdmin(string id);
     }
 }

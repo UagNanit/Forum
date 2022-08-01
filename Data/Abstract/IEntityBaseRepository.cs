@@ -9,6 +9,7 @@ namespace Forum._3.Data.Abstract
     public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {
         IEnumerable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
+        IEnumerable<T> AllIncluding(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
         IEnumerable<T> GetAll();
         int Count();
         T GetSingle(string id);
