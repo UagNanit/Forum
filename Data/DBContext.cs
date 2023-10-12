@@ -76,7 +76,7 @@ namespace Forum._3.Data
             modelBuilder.Entity<User>().HasData(new User[] { adminUser, simpleUser });
             modelBuilder.Entity<Topic>().HasData(new Topic[] { topic1, topic2 });
             modelBuilder.Entity<Post>().HasData(new Post[] { post1, post2 });
-           
+
             base.OnModelCreating(modelBuilder);
         }
     }
